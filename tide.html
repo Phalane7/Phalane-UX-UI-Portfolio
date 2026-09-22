@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tide — Case Study</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+
+  <style>
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    /* =========================================================
+       VARIABLES
+    ========================================================= */
+
+    :root {
+
+      --cream: #fffaf0;
+
+      --yellow: #fff0b8;
+
+      --soft-yellow: #fff6d6;
+
+      --orange: #f7b77b;
+
+      --light-orange: #ffe1c2;
+
+      --peach: #ffd5aa;
+
+      --text: #29251f;
+
+      --muted: #81796c;
+
+      --white: #ffffff;
+
+      --border: rgba(41, 37, 31, 0.12);
+
+    }
+
+
+    /* =========================================================
+       BODY
+    ========================================================= */
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+
+      font-family: 'Poppins', sans-serif;
+
+      background: var(--cream);
+
+      color: var(--text);
+
+      font-weight: 300;
+
+      font-size: 15px;
+
+      line-height: 1.7;
+
+      cursor: none;
+
+      overflow-x: hidden;
+
+    }
+
+
+    /* =========================================================
+       CUSTOM CURSOR
+    ========================================================= */
+
+    .cursor {
+
+      position: fixed;
+
+      width: 9px;
+
+      height: 9px;
+
+      background: var(--text);
+
+      border-radius: 50%;
+
+      pointer-events: none;
+
+      z-index: 9999;
+
+      transform: translate(-50%, -50%);
+
+    }
+
+
+    .cursor-ring {
+
+      position: fixed;
+
+      width: 31px;
+
+      height: 31px;
+
+      border: 1px solid var(--text);
+
+      border-radius: 50%;
+
+      pointer-events: none;
+
+      z-index: 9998;
+
+      transform: translate(-50%, -50%);
+
+      opacity: 0.35;
+
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    nav {
+
+      position: fixed;
+
+      top: 0;
+
+      left: 0;
+
+      right: 0;
+
+      z-index: 100;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      padding: 1.5rem 3rem;
+
+      mix-blend-mode: multiply;
+
+    }
+
+
+    .nav-logo {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 1.2rem;
+
+      font-weight: 400;
+
+      letter-spacing: 0.05em;
+
+      color: var(--text);
+
+      text-decoration: none;
+
+    }
+
+
+    .nav-links {
+
+      display: flex;
+
+      gap: 2.5rem;
+
+      list-style: none;
+
+    }
+
+
+    .nav-links a {
+
+      font-size: 0.68rem;
+
+      letter-spacing: 0.13em;
+
+      text-transform: uppercase;
+
+      text-decoration: none;
+
+      color: var(--text);
+
+      transition: opacity 0.2s ease;
+
+    }
+
+
+    .nav-links a:hover {
+
+      opacity: 0.4;
+
+    }
+
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
+
+    .travellows-case {
+
+      position: relative;
+
+      overflow: hidden;
+
+      background: var(--cream);
+
+      padding: 0 3rem 8rem;
+
+    }
+
+
+    .travellows-container {
+
+      max-width: 1200px;
+
+      margin: 0 auto;
+
+      position: relative;
+
+      z-index: 2;
+
+    }
+
+
+    /* =========================================================
+       FLOATING BUBBLES
+    ========================================================= */
+
+    .bubble {
+
+      position: absolute;
+
+      border-radius: 50%;
+
+      pointer-events: none;
+
+      z-index: 0;
+
+      animation: floatBubble 10s ease-in-out infinite;
+
+    }
+
+
+    .bubble-1 {
+
+      width: 270px;
+
+      height: 270px;
+
+      background: var(--soft-yellow);
+
+      top: 4%;
+
+      left: -120px;
+
+    }
+
+
+    .bubble-2 {
+
+      width: 125px;
+
+      height: 125px;
+
+      background: var(--light-orange);
+
+      top: 14%;
+
+      right: 4%;
+
+      animation-delay: -2s;
+
+    }
+
+
+    .bubble-3 {
+
+      width: 180px;
+
+      height: 180px;
+
+      background: #fff1c9;
+
+      top: 31%;
+
+      left: 3%;
+
+      animation-delay: -4s;
+
+    }
+
+
+    .bubble-4 {
+
+      width: 310px;
+
+      height: 310px;
+
+      background: #ffe6ca;
+
+      top: 51%;
+
+      right: -150px;
+
+      animation-delay: -6s;
+
+    }
+
+
+    .bubble-5 {
+
+      width: 95px;
+
+      height: 95px;
+
+      background: var(--yellow);
+
+      top: 69%;
+
+      left: 8%;
+
+      animation-delay: -3s;
+
+    }
+
+
+    .bubble-6 {
+
+      width: 210px;
+
+      height: 210px;
+
+      background: #ffe0b9;
+
+      bottom: 6%;
+
+      right: 8%;
+
+      animation-delay: -5s;
+
+    }
+
+
+    @keyframes floatBubble {
+
+      0%,
+      100% {
+
+        transform: translate(0, 0);
+
+      }
+
+      50% {
+
+        transform: translate(12px, -28px);
+
+      }
+
+    }
+
+
+    /* =========================================================
+       LABEL
+    ========================================================= */
+
+    .section-label {
+
+      font-size: 0.6rem;
+
+      letter-spacing: 0.25em;
+
+      text-transform: uppercase;
+
+      color: var(--muted);
+
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+
+      min-height: 90vh;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      position: relative;
+
+    }
+
+
+    .hero h1 {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: clamp(5rem, 13vw, 11rem);
+
+      font-weight: 300;
+
+      line-height: 0.82;
+
+      letter-spacing: -0.055em;
+
+      margin: 1rem 0 2rem;
+
+    }
+
+
+    .hero h1 span {
+
+      display: block;
+
+    }
+
+
+    .hero h1 span:last-child {
+
+      margin-left: 12vw;
+
+    }
+
+
+    .hero-description {
+
+      max-width: 590px;
+
+      font-size: 0.9rem;
+
+      color: var(--muted);
+
+      line-height: 1.9;
+
+    }
+
+
+    .hero-tags {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 0.5rem;
+
+      margin-top: 2rem;
+
+    }
+
+
+    .hero-tags span {
+
+      border: 1px solid var(--border);
+
+      border-radius: 100px;
+
+      padding: 0.35rem 0.8rem;
+
+      font-size: 0.58rem;
+
+      letter-spacing: 0.13em;
+
+      background: rgba(255,255,255,0.4);
+
+    }
+
+
+    /* =========================================================
+       CARDS
+    ========================================================= */
+
+    .case-card {
+
+      background: rgba(255,255,255,0.72);
+
+      border: 1px solid var(--border);
+
+      border-radius: 24px;
+
+      padding: 2.7rem;
+
+      margin-bottom: 1.5rem;
+
+      backdrop-filter: blur(12px);
+
+      position: relative;
+
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+
+    }
+
+
+    .case-card:hover {
+
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 25px 70px rgba(106, 77, 40, 0.08);
+
+    }
+
+
+    .card-top {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 4rem;
+
+    }
+
+
+    .card-top span {
+
+      font-size: 0.62rem;
+
+      color: var(--muted);
+
+      letter-spacing: 0.15em;
+
+    }
+
+
+    .card-top small {
+
+      font-size: 0.58rem;
+
+      color: var(--muted);
+
+      letter-spacing: 0.18em;
+
+    }
+
+
+    .case-card h2 {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: clamp(2.3rem, 4.2vw, 4.2rem);
+
+      line-height: 1;
+
+      font-weight: 300;
+
+      letter-spacing: -0.03em;
+
+    }
+
+
+    .case-card p {
+
+      font-size: 0.8rem;
+
+      color: var(--muted);
+
+      line-height: 1.9;
+
+    }
+
+
+    /* =========================================================
+       CONTEXT
+    ========================================================= */
+
+    .context {
+
+      min-height: 390px;
+
+    }
+
+
+    .context-grid {
+
+      display: grid;
+
+      grid-template-columns: 1.2fr 0.8fr;
+
+      gap: 5rem;
+
+      align-items: end;
+
+    }
+
+
+    /* =========================================================
+       WEBSITE SHOWCASE
+    ========================================================= */
+
+    .website-showcase {
+
+      background: var(--yellow);
+
+      padding: 2rem;
+
+    }
+
+
+    .showcase-title {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: flex-end;
+
+      margin-bottom: 2rem;
+
+    }
+
+
+    .showcase-title h2 {
+
+      max-width: 650px;
+
+    }
+
+
+    .showcase-title p {
+
+      max-width: 250px;
+
+      text-align: right;
+
+    }
+
+
+    /*
+      IMPORTANT:
+
+      Your original website artwork is 1440 x 4622.
+
+      The image is NOT cropped.
+      It is displayed using object-fit: contain,
+      so the COMPLETE design remains visible.
+    */
+
+    .website-frame {
+  width: 85%;
+  max-width: 900px;
+  margin: 0 auto;
+
+  background: #f6e7c2;
+
+  border-radius: 16px;
+  overflow: hidden;
+
+  border: 1px solid rgba(41,37,31,0.12);
+
+  position: relative;
+
+  cursor: zoom-in;
+}
+
+.website-frame img {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  object-fit: contain;
+
+  transition: transform 0.4s ease;
+}
+
+.website-frame:hover img {
+  transform: scale(1.02);
+}
+
+    .image-placeholder {
+
+      position: absolute;
+
+      inset: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      flex-direction: column;
+
+      text-align: center;
+
+      color: var(--muted);
+
+    }
+
+
+    .image-placeholder span {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 5rem;
+
+      line-height: 1;
+
+    }
+
+
+    .image-placeholder p {
+
+      font-size: 0.6rem;
+
+      letter-spacing: 0.16em;
+
+    }
+
+
+    /* =========================================================
+       DESIGN DIRECTION
+    ========================================================= */
+
+    .direction {
+
+      background: #fff3d0;
+
+    }
+
+
+    .direction-grid {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 5rem;
+
+    }
+
+
+    .direction-main p {
+
+      max-width: 550px;
+
+      margin-top: 1.5rem;
+
+    }
+
+
+    .direction-details {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 1.7rem;
+
+    }
+
+
+    .detail {
+
+      border-top: 1px solid var(--border);
+
+      padding-top: 1rem;
+
+    }
+
+
+    .detail span {
+
+      display: block;
+
+      font-size: 0.58rem;
+
+      color: var(--muted);
+
+      letter-spacing: 0.15em;
+
+      margin-bottom: 0.5rem;
+
+    }
+
+
+    .detail strong {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 2rem;
+
+      font-weight: 300;
+
+    }
+
+
+    /* =========================================================
+       COLOURS
+    ========================================================= */
+
+    .swatches {
+
+      display: flex;
+
+      gap: 0.5rem;
+
+      margin-top: 0.7rem;
+
+    }
+
+
+    .swatch {
+
+      width: 46px;
+
+      height: 46px;
+
+      border-radius: 50%;
+
+      border: 1px solid var(--border);
+
+    }
+
+
+    .swatch-yellow {
+
+      background: #E7E2DC;
+
+    }
+
+
+    .swatch-orange {
+
+      background: #FF6F59;
+
+    }
+
+
+    .swatch-cream {
+
+      background: #fffaf0;
+
+    }
+
+
+    .swatch-peach {
+
+      background: #04262B;
+
+    }
+
+
+    /* =========================================================
+       EXPERIENCE
+    ========================================================= */
+
+    .experience h2 {
+
+      max-width: 750px;
+
+      margin-bottom: 3rem;
+
+    }
+
+
+    .experience-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 0.8rem;
+
+    }
+
+
+    .experience-item {
+
+      background: var(--cream);
+
+      border-radius: 15px;
+
+      min-height: 220px;
+
+      padding: 1.5rem;
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+    .experience-item > span {
+
+      font-size: 0.6rem;
+
+      color: var(--muted);
+
+    }
+
+
+    .experience-item strong {
+
+      margin-top: auto;
+
+      font-size: 0.9rem;
+
+      font-weight: 400;
+
+    }
+
+
+    .experience-item p {
+
+      font-size: 0.7rem;
+
+      margin-top: 0.5rem;
+
+    }
+
+
+    /* =========================================================
+       AFRICA DESTINATIONS
+    ========================================================= */
+
+    .destinations {
+
+      background: #fff7df;
+
+    }
+
+
+    .destinations h2 {
+
+      max-width: 700px;
+
+      margin-bottom: 3rem;
+
+    }
+
+
+    .destination-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 1rem;
+
+    }
+
+
+    .destination {
+
+      min-height: 350px;
+
+      border-radius: 16px;
+
+      overflow: hidden;
+
+      position: relative;
+
+      background: var(--light-orange);
+
+    }
+
+
+    .destination img {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+    }
+
+
+    .destination-overlay {
+
+      position: absolute;
+
+      left: 1rem;
+
+      right: 1rem;
+
+      bottom: 1rem;
+
+      background: rgba(255,250,240,0.88);
+
+      backdrop-filter: blur(8px);
+
+      padding: 1rem;
+
+      border-radius: 10px;
+
+    }
+
+
+    .destination-overlay span {
+
+      font-size: 0.58rem;
+
+      color: var(--muted);
+
+      letter-spacing: 0.12em;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .destination-overlay strong {
+
+      display: block;
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 1.7rem;
+
+      font-weight: 300;
+
+    }
+
+
+    /* =========================================================
+       FINAL DESIGN
+    ========================================================= */
+
+    .final-design {
+
+      background: var(--orange);
+
+    }
+
+
+    .final-design h2 {
+
+      max-width: 750px;
+
+    }
+
+
+    .final-description {
+
+      max-width: 580px;
+
+      margin: 1.5rem 0 3rem;
+
+    }
+
+
+    .final-image {
+
+      width: 100%;
+
+      aspect-ratio: 1440 / 4622;
+
+      background: var(--cream);
+
+      border-radius: 16px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(41,37,31,0.12);
+
+    }
+
+
+    .final-image img {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: contain;
+
+      display: block;
+
+    }
+
+
+    /* =========================================================
+       OUTCOME
+    ========================================================= */
+
+    .outcome {
+
+      background: white;
+
+    }
+
+
+    .outcome-grid {
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 5rem;
+
+    }
+
+
+    .outcome-list > div {
+
+      padding: 1.3rem 0;
+
+      border-top: 1px solid var(--border);
+
+      display: grid;
+
+      grid-template-columns: 45px 1fr;
+
+      gap: 1rem;
+
+    }
+
+
+    .outcome-list strong {
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 1.5rem;
+
+      font-weight: 300;
+
+    }
+
+
+    .outcome-list p {
+
+      font-size: 0.74rem;
+
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    .end {
+
+      padding: 5rem 0 1rem;
+
+      text-align: center;
+
+    }
+
+
+    .end p {
+
+      font-size: 0.58rem;
+
+      letter-spacing: 0.2em;
+
+      color: var(--muted);
+
+    }
+
+
+    /* =========================================================
+       REVEAL
+    ========================================================= */
+
+    .reveal {
+
+      opacity: 0;
+
+      transform: translateY(30px);
+
+      transition:
+        opacity 0.8s cubic-bezier(0.16,1,0.3,1),
+        transform 0.8s cubic-bezier(0.16,1,0.3,1);
+
+    }
+
+
+    .reveal.visible {
+
+      opacity: 1;
+
+      transform: translateY(0);
+
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 800px) {
+
+      body {
+
+        cursor: auto;
+
+      }
+
+
+      .cursor,
+      .cursor-ring {
+
+        display: none;
+
+      }
+
+
+      nav {
+
+        padding: 1.2rem;
+
+      }
+
+
+      .nav-links {
+
+        gap: 1rem;
+
+      }
+
+
+      .travellows-case {
+
+        padding: 0 1.1rem 5rem;
+
+      }
+
+
+      .hero {
+
+        min-height: 78vh;
+
+      }
+
+
+      .hero h1 {
+
+        font-size: clamp(4.5rem, 20vw, 8rem);
+
+      }
+
+
+      .hero h1 span:last-child {
+
+        margin-left: 4vw;
+
+      }
+
+
+      .case-card {
+
+        padding: 1.4rem;
+
+        border-radius: 16px;
+
+      }
+
+
+      .context-grid,
+      .direction-grid,
+      .outcome-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 2rem;
+
+      }
+
+
+      .experience-grid,
+      .destination-grid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .website-showcase {
+
+        padding: 1rem;
+
+      }
+
+
+      .showcase-title {
+
+        display: block;
+
+      }
+
+
+      .showcase-title p {
+
+        text-align: left;
+
+        margin-top: 1rem;
+
+      }
+
+
+      .bubble-1 {
+
+        width: 160px;
+
+        height: 160px;
+
+      }
+
+
+      .bubble-4 {
+
+        width: 180px;
+
+        height: 180px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =======================================================
+       CURSOR
+  ======================================================== -->
+
+  <div class="cursor"></div>
+
+  <div class="cursor-ring"></div>
+
+
+  <!-- =======================================================
+       NAV
+  ======================================================== -->
+
+  <nav>
+
+    <a href="index.html" class="nav-logo">
+      PS
+    </a>
+
+
+    <ul class="nav-links">
+
+      <li>
+        <a href="index.html">Craft</a>
+      </li>
+
+      <li>
+        <a href="index.html#about">About</a>
+      </li>
+
+      <li>
+        <a href="index.html#cv">CV</a>
+      </li>
+
+    </ul>
+
+  </nav>
+
+
+  <!-- =======================================================
+       CASE STUDY
+  ======================================================== -->
+
+  <main class="travellows-case">
+
+
+    <!-- BUBBLES -->
+
+    <div class="bubble bubble-1"></div>
+
+    <div class="bubble bubble-2"></div>
+
+    <div class="bubble bubble-3"></div>
+
+    <div class="bubble bubble-4"></div>
+
+    <div class="bubble bubble-5"></div>
+
+    <div class="bubble bubble-6"></div>
+
+
+    <div class="travellows-container">
+
+
+      <!-- =====================================================
+           HERO
+      ====================================================== -->
+
+      <section class="hero reveal">
+
+        <p class="section-label">
+          CASE STUDY / Tide
+        </p>
+
+
+        <h1>
+
+          <span>Ti</span>
+
+          <span>de.</span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+          A travel website designed for people who want to
+          discover and experience the oceans of Africa.
+          The experience combines destination discovery,
+          visual storytelling and simple travel planning
+          into one warm and inviting website.
+
+        </p>
+
+
+        <div class="hero-tags">
+
+          <span>WEB DESIGN</span>
+
+          <span>UX/UI DESIGN</span>
+
+          <span>TRAVEL</span>
+
+          <span>AFRICA</span>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           01 CONTEXT
+      ====================================================== -->
+
+      <section class="case-card context reveal">
+
+        <div class="card-top">
+
+          <span>01</span>
+
+          <small>CONTEXT</small>
+
+        </div>
+
+
+        <div class="context-grid">
+
+          <h2>
+
+            Discovering Africa
+            through the ocean.
+
+          </h2>
+
+
+          <p>
+
+            Travellows is a travel website created to help
+            visitors discover beautiful ocean destinations
+            across Africa. The design focuses on making
+            exploration feel exciting, visual and easy to
+            navigate.
+
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           02 WEBSITE SHOWCASE
+      ====================================================== -->
+
+      <section class="case-card website-showcase reveal">
+
+        <div class="card-top">
+
+          <span>02</span>
+
+          <small>WEBSITE DESIGN</small>
+
+        </div>
+
+
+        <div class="showcase-title">
+
+          <h2>
+            The full experience.
+          </h2>
+
+
+          <p>
+            Designed as a long-form travel experience,
+            allowing visitors to move naturally from
+            inspiration to destination discovery.
+          </p>
+
+        </div>
+
+
+        <!--
+          YOUR 1440 × 4622 WEBSITE IMAGE
+
+          Replace:
+
+          images/travellows-full.png
+
+          with your actual image.
+
+          The aspect ratio keeps the FULL IMAGE visible.
+        -->
+
+        <div class="website-frame">
+
+          <img
+            src="Tide (2).png"
+            alt="Travellows website full design"
+          >
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           03 DESIGN DIRECTION
+      ====================================================== -->
+
+      <section class="case-card direction reveal">
+
+        <div class="card-top">
+
+          <span>03</span>
+
+          <small>DESIGN DIRECTION</small>
+
+        </div>
+
+
+        <div class="direction-grid">
+
+
+          <div class="direction-main">
+
+            <h2>
+
+              Warm, playful and
+              made for exploration.
+
+            </h2>
+
+
+            <p>
+
+              The visual direction uses warm colours and
+              soft shapes to create a feeling of sunshine,
+              beaches and travel. 
+
+            </p>
+
+          </div>
+
+
+          <div class="direction-details">
+
+
+            <!-- TYPOGRAPHY -->
+
+            <div class="detail">
+
+              <span>
+                TYPOGRAPHY
+              </span>
+
+              <strong>
+              Baloo 2 + Inter
+              </strong>
+
+              <p>
+               Baloo 2 gives the design a friendly, playful feel, while Inter keeps the supporting text clean, simple and easy to read.
+              </p>
+
+            </div>
+
+
+            <!-- COLOURS -->
+
+            <div class="detail">
+
+              <span>
+                COLOUR PALETTE
+              </span>
+
+
+              <div class="swatches">
+
+                <div class="swatch swatch-yellow"></div>
+
+                <div class="swatch swatch-orange"></div>
+
+                <div class="swatch swatch-cream"></div>
+
+                <div class="swatch swatch-peach"></div>
+
+              </div>
+
+
+              <p>
+A soft neutral palette with warm coral and deep teal creates a balance between calm, playful and modern.
+The neutral tones keep the interface clean, while coral adds energy and teal creates contrast.
+
+              </p>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           04 EXPERIENCE
+      ====================================================== -->
+
+      <section class="case-card experience reveal">
+
+        <div class="card-top">
+
+          <span>04</span>
+
+          <small>USER EXPERIENCE</small>
+
+        </div>
+
+
+        <h2>
+
+          From inspiration
+          to exploration.
+
+        </h2>
+
+
+        <div class="experience-grid">
+
+
+          <div class="experience-item">
+
+            <span>01</span>
+
+            <strong>
+              Discover
+            </strong>
+
+            <p>
+              Introduce visitors to beautiful African
+              ocean destinations.
+            </p>
+
+          </div>
+
+
+          <div class="experience-item">
+
+            <span>02</span>
+
+            <strong>
+              Explore
+            </strong>
+
+            <p>
+              Help users browse destinations and
+              understand what makes each location special.
+            </p>
+
+          </div>
+
+
+          <div class="experience-item">
+
+            <span>03</span>
+
+            <strong>
+              Plan
+            </strong>
+
+            <p>
+              Give visitors useful information as they
+              move closer to planning their trip.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+
+
+          
+
+
+          
+
+        
+
+
+      <!-- =====================================================
+           07 OUTCOME
+      ====================================================== -->
+
+      <section class="case-card outcome reveal">
+
+        <div class="card-top">
+
+          <span>07</span>
+
+          <small>OUTCOME</small>
+
+        </div>
+
+
+        <div class="outcome-grid">
+
+
+          <h2>
+
+            Turning destination
+            discovery into
+            an experience.
+
+          </h2>
+
+
+          <div class="outcome-list">
+
+
+            <div>
+
+              <strong>
+                01
+              </strong>
+
+              <p>
+                A warmer visual identity that reflects
+                the feeling of travel and the ocean.
+              </p>
+
+            </div>
+
+
+            <div>
+
+              <strong>
+                02
+              </strong>
+
+              <p>
+                A clear structure that allows visitors
+                to explore destinations naturally.
+              </p>
+
+            </div>
+
+
+            <div>
+
+              <strong>
+                03
+              </strong>
+
+              <p>
+                Large imagery gives the destinations
+                the attention they deserve.
+              </p>
+
+            </div>
+
+
+            <div>
+
+              <strong>
+                04
+              </strong>
+
+              <p>
+                A responsive layout keeps the experience
+                clean across different screen sizes.
+              </p>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           END
+      ====================================================== -->
+
+      <div class="end">
+
+        <p>
+          Tide — EXPLORE AFRICA THROUGH THE OCEAN
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </main>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+
+    /* CUSTOM CURSOR */
+
+    const cursor =
+      document.querySelector('.cursor');
+
+    const cursorRing =
+      document.querySelector('.cursor-ring');
+
+
+    document.addEventListener(
+      'mousemove',
+      function(e) {
+
+        cursor.style.left =
+          e.clientX + 'px';
+
+        cursor.style.top =
+          e.clientY + 'px';
+
+
+        cursorRing.style.left =
+          e.clientX + 'px';
+
+        cursorRing.style.top =
+          e.clientY + 'px';
+
+      }
+    );
+
+
+    /* SCROLL REVEAL */
+
+    const revealElements =
+      document.querySelectorAll('.reveal');
+
+
+    const revealObserver =
+      new IntersectionObserver(
+
+        function(entries) {
+
+          entries.forEach(function(entry) {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add(
+                'visible'
+              );
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
+
+
+    revealElements.forEach(function(element) {
+
+      revealObserver.observe(element);
+
+    });
+
+
+  </script>
+
+
+</body>
+
+</html>
